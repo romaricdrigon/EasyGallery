@@ -1,0 +1,58 @@
+body {
+	background: #000;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/*
+ * Main content
+ */
+.main {
+	width: 960px;
+	margin: auto;
+}
+.main h2 {
+	color: #bbb;
+}
+.main a {
+	color: #eee;
+	text-decoration: none;
+}
+.main a:hover {
+	text-decoration: underline;
+}
+.main a:visited {
+	color: #ccc;
+	text-decoration: underline;
+}
+
+/*
+ * Galleries list
+ */
+.gallery_list {
+	color: #333;
+	border: 2px solid #444;
+	padding: 15px;
+	margin-top: 20px;
+}
+.gallery_list h3 {
+	margin: 0 0 10px 0;
+	color: #bbb;
+}
+.gallery_list .thumb {
+	height: 150px;
+	width: 150px;
+	margin: 17px;
+	float: left;
+	position: relative;
+	/* trick to center the thumb */
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+.gallery_list .thumb .text {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	padding: 3px 0;
+	background: rgba(0, 0, 0, 0.6);
+	text-align: center;
+}
