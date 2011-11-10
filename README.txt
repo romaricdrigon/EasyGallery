@@ -1,6 +1,6 @@
 ****** How it works? ******
 
-You just copy this app's files on a server with Php enabled. In /photos/ folder, you can put files & sub-folders.
+You just copy this app's files on a server with Php enabled. In a subfolder called /photos/, you can put files & sub-folders.
 It'll list all pictures files as a gallery powered by Galleria, and sub-folders with thumbnails.
 
 
