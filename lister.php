@@ -59,7 +59,7 @@ function get_thumbnail($dir)
 	// we look for a thumbnail.jpg file
 	if (is_file($dir.'/thumbnail.jpg') === TRUE)
 	{
-		return $dir.'/thumbnail.jpg';
+		return 'thumbnail.jpg';
 	}
 	else
 	{
@@ -89,7 +89,7 @@ function get_folder()
 	$folder = mysql_escape_string($folder); // be prudent
 	
 	// remove ending slash
-	$folder = rtrim($folder, '/');
+	$folder = no_slash($folder);
 	
 	return $folder;
 }
@@ -115,6 +115,14 @@ function show_path($root, $dir)
 	}
 	
 	echo $full_path;
+}
+
+// withdrew the ending slash from a name
+// (if one found)
+// not so useful, more kind of an alias
+function no_slash($name)
+{
+	return rtrim($name, '/');
 }
 
 /* EOF */

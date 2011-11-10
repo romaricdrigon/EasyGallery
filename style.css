@@ -73,3 +73,16 @@ body {
 	background: rgba(0, 0, 0, 0.6);
 	text-align: center;
 }
+
+/*
+ * Footer
+ */
+.footer {
+	margin: 30px 0;
+	font-size: 0.9em;
+	text-align: center;
+	color: #333;
+}
+.footer a {
+	color: inherit;
+}

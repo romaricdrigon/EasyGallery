@@ -2,7 +2,7 @@
 	require('lister.php');
 	
 	$subdir = get_folder(); // get only subdirectory
-	$dir = 'photos/'.$subdir; // full path
+	$dir = ($subdir=='')?'photos':'photos/'.$subdir; // full path - check if there's subdir to avoid ending /
 
 	// scan folder
 	$list = lister($dir);
@@ -44,11 +44,16 @@
 						// test to avoid one more slash	
 						$path = ($subdir=='')?$fol:$subdir.'/'.$fol;
 						
-						$html = '<a href="?gal='.$path.'/" title="'.$fol.'">';
-						$html .= '<div class="thumb" style="background-image: url('.$dir.'/'.$fol.'/'.get_thumbnail($dir.'/'.$fol).');"';
-						$html .= '><div class="text">'.$fol.'</div></div></a>';
+						$thumb = get_thumbnail($dir.'/'.$fol);
 						
-						echo $html;
+						if ($thumb != '')
+						{
+							$html = '<a href="?gal='.$path.'/" title="'.$fol.'">';
+							$html .= '<div class="thumb" style="background-image: url(\''.$dir.'/'.$fol.'/'.$thumb.'\');"';
+							$html .= '><div class="text">'.$fol.'</div></div></a>';
+							
+							echo $html;
+						}
 					}
 				?>
 				<br clear="all" /><!-- the famous infamous trick -->
@@ -56,7 +61,9 @@
 		<?php 
 			endif;
 		?>
-	<div class="footer"></div>
+	<div class="footer">
+		EasyGallery, 2011, <a href="http://github.com/romaricdrigon/" target="_blank">http://github.com/romaricdrigon/</a>
+	</div>
 	</div> <!-- end main -->
 	<!-- finally, we load galleria -->
 	<script>
