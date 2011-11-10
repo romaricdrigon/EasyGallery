@@ -3,6 +3,6 @@
 	
 	require('lister.php');
 	
-	echo get_thumbnail('photos');
+	echo get_folder();
 	
 /* EOF */

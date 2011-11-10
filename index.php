@@ -1,8 +1,10 @@
 <?php
 	require('lister.php');
 	
-	// first, scan current folder
-	$dir = 'photos';
+	$subdir = get_folder(); // get only subdirectory
+	$dir = 'photos/'.$subdir; // full path
+
+	// scan folder
 	$list = lister($dir);
 ?>
 <!doctype html>
@@ -29,21 +31,30 @@
 				}
 			?>
 		</div>
-		<div class="gallery_list">
-			<h3>Galeries</h3>
-			<?php
-				// show link to images
-				foreach ($list['folder'] as $fol)
-				{
-					$html = '<a href="?gal='.$fol.'" title="'.$fol.'">';
-					$html .= '<div class="thumb" style="background-image: url('.$dir.'/'.$fol.'/'.get_thumbnail($dir.'/'.$fol).');"';
-					$html .= '><div class="text">'.$fol.'</div></div></a>';
-					
-					echo $html;
-				}
-			?>
-			<br clear="all" /><!-- the famous infamous trick -->
-		</div>
+		<?php 
+			if (sizeof($list['folder']) != 0):
+		?>
+			<div class="gallery_list">
+				<h3>Sous-galeries</h3>
+				<?php
+					// show link to images
+					foreach ($list['folder'] as $fol)
+					{
+						// test to avoid one more slash	
+						$path = ($subdir=='')?$fol:$subdir.'/'.$fol;
+						
+						$html = '<a href="?gal='.$path.'/" title="'.$fol.'">';
+						$html .= '<div class="thumb" style="background-image: url('.$dir.'/'.$fol.'/'.get_thumbnail($dir.'/'.$fol).');"';
+						$html .= '><div class="text">'.$fol.'</div></div></a>';
+						
+						echo $html;
+					}
+				?>
+				<br clear="all" /><!-- the famous infamous trick -->
+			</div>
+		<?php 
+			endif;
+		?>
 	<div class="footer"></div>
 	</div> <!-- end main -->
 	<!-- finally, we load galleria -->

@@ -9,8 +9,10 @@
  */
 
  	// we can't define an array as const - so we'll accede this var via super-global
+ 	// and, oh, yes it's dirty, but so damn fast to code
 	$extensions = array('jpg', 'JPG', 'jpeg', 'JPEG', 'png', 'gif'); // allowed files extensions
 
+//  list images in a given directory
 function lister($dir)
 {
 	$files = scandir($dir);
@@ -44,6 +46,7 @@ function lister($dir)
 	return $content;
 }
 
+// return thumbnail representing a directory
 function get_thumbnail($dir)
 {
 	global $extensions; // access defined file extensions list
@@ -76,6 +79,19 @@ function get_thumbnail($dir)
 			}
 		}
 	}
+}
+
+// return the folder from GET param
+function get_folder()
+{
+	$folder = $_GET['gal'];
+	
+	$folder = mysql_escape_string($folder); // be prudent
+	
+	// remove ending slash
+	$folder = rtrim($folder, '/');
+	
+	return $folder;
 }
 
 /* EOF */

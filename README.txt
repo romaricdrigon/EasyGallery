@@ -6,7 +6,7 @@ It'll list all pictures files (.jpg or .jpeg only) as a gallery powered by Galle
 ****** Setup ******
 
 Put the app in root directory.
-Put pictures & sub-folders (to create galleries) in /photo/
+Put pictures & sub-folders (to create galleries) in /photos/
 
 ****** What format are supported? ******
 
