@@ -94,4 +94,27 @@ function get_folder()
 	return $folder;
 }
 
+// display a path link
+// @param :
+// - root (first directory, Home)
+// - then path
+function show_path($root, $dir)
+{
+	echo '<a href="?gal=/" title="Index">Index</a>';
+	
+	if ($dir != '')
+	{	
+		$path = explode('/', $dir);
+		
+		foreach ($path as $step)
+		{
+			$link .= $step.'/';
+			
+			$full_path .= ' &gt; <a href="?gal='.$link.'" title="'.$step.'">'.$step.'</a>';
+		}		
+	}
+	
+	echo $full_path;
+}
+
 /* EOF */

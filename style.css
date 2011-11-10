@@ -26,6 +26,23 @@ body {
 }
 
 /*
+ * Path
+ */
+.path {
+	padding-left: 30px;
+	color: #777;
+	font-weight: normal;
+	letter-spacing: 1px;
+}
+.path a {
+	color: #aaa;
+}
+.path a:last-of-type {
+	color: #fff;
+	text-decoration: underline;
+}
+
+/*
  * Galleries list
  */
 .gallery_list {

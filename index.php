@@ -21,6 +21,7 @@
 <body>
 	<div class="main">
 		<div class="header"><h2>EasyGallery</h2></div>
+		<div class="path"><?php show_path('photos',$subdir); ?></div>
 		<div class="gallery" id="gallery">
 			<!-- link to images - will be displayed if Javascript is disabled -->
 			<?php
