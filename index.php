@@ -44,16 +44,11 @@
 						// test to avoid one more slash	
 						$path = ($subdir=='')?$fol:$subdir.'/'.$fol;
 						
-						$thumb = get_thumbnail($dir.'/'.$fol);
+						$html = '<a href="?gal='.$path.'/" title="'.$fol.'">';
+						$html .= '<div class="thumb" style="background-image: url(\''.$dir.'/'.$fol.'/'. get_thumbnail($dir.'/'.$fol).'\');"';
+						$html .= '><div class="text">'.$fol.'</div></div></a>';
 						
-						if ($thumb != '')
-						{
-							$html = '<a href="?gal='.$path.'/" title="'.$fol.'">';
-							$html .= '<div class="thumb" style="background-image: url(\''.$dir.'/'.$fol.'/'.$thumb.'\');"';
-							$html .= '><div class="text">'.$fol.'</div></div></a>';
-							
-							echo $html;
-						}
+						echo $html;
 					}
 				?>
 				<br clear="all" /><!-- the famous infamous trick -->
