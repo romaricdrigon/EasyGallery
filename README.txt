@@ -8,7 +8,7 @@ It'll list all pictures files as a gallery powered by Galleria, and sub-folders 
 
 Put the app in root directory.
 Put pictures & sub-folders (to create galleries) in /photos/
-Avoid special chars in names of subdirectories & files (spaces are ok, as accents).
+Avoid special chars in names of subdirectories & files (spaces are ok, as accents). Double dot ('..') is forbidden, as it means upper directory!
 
 
 ****** What format are supported? ******
@@ -25,4 +25,4 @@ If no picture is found, it'll not display the folder.
 ****** License ******
 
 Not sure I've one.
-Feel free to use and abuse this, modify and resdistributing and so on. I would be happy to hear from users!
+Feel free to use and abuse this, modify and redistributing and so on. I would be happy to hear from users!

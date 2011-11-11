@@ -86,6 +86,12 @@ function get_folder()
 {
 	$folder = $_GET['gal'];
 	
+	if (stripos($folder, '..') !== FALSE) // strict test (can return 0 for "position 0")
+	{
+		//die("Forbidden directory"); // don't fuck with me bro
+		return ''; // be nice, just return to root
+	}
+	
 	$folder = mysql_escape_string($folder); // be prudent
 	
 	// remove ending slash

@@ -67,7 +67,7 @@
 		    height: 700,
 		    width: 960,
 		    debug: false,
-		    // we use a custom source, because img will all load o nstartup it's crappy, and json maybe not work if javascript is disabled
+		    // we use a custom source, because img will all load on startup it's crappy, and json maybe not work if javascript is disabled
 		    dataSelector: "a",
 		    dataConfig: function(a) {
 		        return {
