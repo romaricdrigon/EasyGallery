@@ -44,7 +44,7 @@
 						// test to avoid one more slash	
 						$path = ($subdir=='')?$fol:$subdir.'/'.$fol;
 						
-						$html = '<a href="?gal='.$path.'/" title="'.$fol.'">';
+						$html = '<a href="?gallery='.$path.'/" title="'.$fol.'">';
 						$html .= '<div class="thumb" style="background-image: url(\''.$dir.'/'.$fol.'/'. get_thumbnail($dir.'/'.$fol).'\');"';
 						$html .= '><div class="text">'.$fol.'</div></div></a>';
 						

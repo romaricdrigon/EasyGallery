@@ -84,7 +84,7 @@ function get_thumbnail($dir)
 // return the folder from GET param
 function get_folder()
 {
-	$folder = $_GET['gal'];
+	$folder = $_GET['gallery'];
 	
 	if (stripos($folder, '..') !== FALSE) // strict test (can return 0 for "position 0")
 	{

@@ -39,7 +39,10 @@ body {
 }
 .path a:last-of-type {
 	color: #fff;
-	text-decoration: underline;
+}
+.path a:hover {
+	color: #fff;
+	text-decoration: none;
 }
 
 /*
