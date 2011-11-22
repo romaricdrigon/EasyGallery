@@ -106,7 +106,7 @@ function get_folder()
 // - then path
 function show_path($root, $dir)
 {
-	echo '<a href="?gal=/" title="Index">Index</a>';
+	echo '<a href="?gallery=/" title="Index">Index</a>';
 	
 	if ($dir != '')
 	{	
@@ -116,7 +116,7 @@ function show_path($root, $dir)
 		{
 			$link .= $step.'/';
 			
-			$full_path .= ' &gt; <a href="?gal='.$link.'" title="'.$step.'">'.$step.'</a>';
+			$full_path .= ' &gt; <a href="?gallery='.$link.'" title="'.$step.'">'.$step.'</a>';
 		}		
 	}
 	
