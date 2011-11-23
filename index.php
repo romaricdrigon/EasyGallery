@@ -21,7 +21,7 @@
 <body>
 	<div class="main">
 		<div class="header"><h2>EasyGallery</h2></div>
-		<div class="path"><?php show_path('photos',$subdir); ?></div>
+		<div class="path"><?php show_path('photos', $subdir); ?></div>
 		<div class="gallery" id="gallery">
 			<!-- link to images - will be displayed if Javascript is disabled -->
 			<?php
@@ -44,8 +44,8 @@
 						// test to avoid one more slash	
 						$path = ($subdir=='')?$fol:$subdir.'/'.$fol;
 						
-						$html = '<a href="?gallery='.$path.'/" title="'.$fol.'">';
-						$html .= '<div class="thumb" style="background-image: url(\''.$dir.'/'.$fol.'/'. get_thumbnail($dir.'/'.$fol).'\');"';
+						$html = '<a href="?gallery='.gallery_link($path).'" title="'.$fol.'">'; // url encode, be prudent
+						$html .= '<div class="thumb" style="background-image: url(\''.$dir.'/'.$fol.'/'.get_thumbnail($dir.'/'.$fol).'\');"';
 						$html .= '><div class="text">'.$fol.'</div></div></a>';
 						
 						echo $html;

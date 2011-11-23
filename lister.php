@@ -15,11 +15,13 @@
 //  list images in a given directory
 function lister($dir)
 {
+	echo $dir;
+	
 	$files = scandir($dir);
 	
 	if ($files === FALSE)
 	{
-		echo "Unable to open directory";
+		echo 'Unable to open folder';
 	}
 	
 	$content = array();
@@ -40,7 +42,7 @@ function lister($dir)
 			// we consider this script will not be used by idiots, so we don't re-check mime type
 			$content['picture'][] = $file;
 		}
-		// we elude symlink
+		// we elude symlinks
 	}
 	
 	return $content;
@@ -84,15 +86,13 @@ function get_thumbnail($dir)
 // return the folder from GET param
 function get_folder()
 {
-	$folder = $_GET['gallery'];
+	$folder = $_GET['gallery']; // $_GET is automatically url-decoded - and a slash added
 	
 	if (stripos($folder, '..') !== FALSE) // strict test (can return 0 for "position 0")
 	{
 		//die("Forbidden directory"); // don't fuck with me bro
 		return ''; // be nice, just return to root
 	}
-	
-	$folder = mysql_escape_string($folder); // be prudent
 	
 	// remove ending slash
 	$folder = no_slash($folder);
@@ -106,7 +106,7 @@ function get_folder()
 // - then path
 function show_path($root, $dir)
 {
-	echo '<a href="?gal=/" title="Index">Index</a>';
+	echo '<a href="?gallery=/" title="Index">Index</a>';
 	
 	if ($dir != '')
 	{	
@@ -114,9 +114,12 @@ function show_path($root, $dir)
 		
 		foreach ($path as $step)
 		{
+			$step = stripslashes($step); // strip slashes that were automatically added when using $_GET
 			$link .= $step.'/';
+			$step = htmlentities($step, ENT_QUOTES, 'UTF-8'); // html encode to take care of probable shit, watch out we're in UTF-8 for folders
 			
-			$full_path .= ' &gt; <a href="?gal='.$link.'" title="'.$step.'">'.$step.'</a>';
+			// last step, assemble and apply gallery_link
+			$full_path .= ' &gt; <a href="?gallery='.gallery_link($link).'" title="'.$step.'">'.$step.'</a>';
 		}		
 	}
 	
@@ -129,6 +132,13 @@ function show_path($root, $dir)
 function no_slash($name)
 {
 	return rtrim($name, '/');
+}
+
+// format a link to a sub gallery
+// url encode and remove last right slash
+function gallery_link($name)
+{
+	return urlencode(no_slash($name));
 }
 
 /* EOF */
