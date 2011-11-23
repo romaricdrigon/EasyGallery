@@ -67,6 +67,7 @@ body {
 	/* trick to center the thumb */
 	background-position: center center;
 	background-repeat: no-repeat;
+	background-size: cover; /* CSS3 to the rescue, fill the square */
 }
 .gallery_list .thumb .text {
 	position: absolute;
