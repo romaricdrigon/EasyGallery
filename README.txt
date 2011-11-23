@@ -3,6 +3,8 @@
 You just copy this app's files on a server with Php enabled. In a subfolder called /photos/, you can put files & sub-folders.
 It'll list all pictures files as a gallery powered by Galleria, and sub-folders with thumbnails.
 
+It's best not to use big pictures files (< 0.5 mb), as thumbnails are resized one the fly, it both useless (they're displayed as 960px wide) and may provoke slowing downs.
+
 
 ****** Setup ******
 
@@ -19,7 +21,7 @@ Only pictures are accepted, .jpg, .jpeg, .png or .gif files.
 ****** Set a custom thumbnail ******
 
 It'll first search subfolders for a file named thumbnail.jpg. If not found, it'll use the first picture.
-If no picture is found, it'll not display the folder.
+If not found ine the folder, it'll go recursive, search it's first subfolder for a file...
 
 
 ****** License ******
