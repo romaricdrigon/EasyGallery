@@ -15,11 +15,11 @@
 //  list images in a given directory
 function lister($dir)
 {
-	$files = scandir($dir); // strip slashes added in $_GET
+	$files = scandir($dir);
 	
 	if ($files === FALSE)
 	{
-		echo 'Unable to open folder 1';
+		echo 'Unable to open folder';
 	}
 	
 	$content = array();
@@ -47,42 +47,39 @@ function lister($dir)
 }
 
 // return thumbnail representing a directory
-// V2 : works with the list previously created, faster & more powerful
-//function get_thumbnail($dir)
-function get_thumbnail($list)
+// V2 : recursivity FTW
+// param : dir : folder that must represented by a thumbnail
+function get_thumbnail($dir)
 {
 	global $extensions; // access defined file extensions list
 	
-	/*if (is_dir($dir) !== TRUE)
-	{
-		echo 'Unable to open folder';
-	}
+	$list = lister($dir);
 	
-	// we look for a thumbnail.jpg file
-	if (is_file($dir.'/thumbnail.jpg') === TRUE)
+	if (isset($list['picture']['thumbnail.jpg']) === TRUE)
 	{
 		return 'thumbnail.jpg';
 	}
-	else
+	// get first picture file in the folder
+	else if ((isset($list['picture']) === TRUE) && (sizeof($list['picture']) > 0))
 	{
-		// get first file, by asc. alphabetic order
-		$files = scandir($dir);
-		
-		if ($files === FALSE)
+		return $list['picture'][0];
+	}
+	// search in sub folders
+	else if ((isset($list['folder']) === TRUE) && (sizeof($list['folder']) > 0))
+	{
+		foreach ($list['folder'] as $a_folder)
 		{
-			echo "Unable to open directory";
-		}
-		
-		foreach ($files as $file)
-		{
-			if (is_file($dir.'/'.$file) === TRUE && in_array(pathinfo($file, PATHINFO_EXTENSION), $extensions)) // file
+			// recursivity, yeah!
+			$a_folder_thumb = get_thumbnail($dir.'/'.$a_folder);
+			
+			if ($a_folder_thumb !== '')
 			{
-				return $file; // return the first picture found
+				return $a_folder.'/'.$a_folder_thumb;
 			}
 		}
-	}*/
+	}
 	
-	//if ()
+	return ''; // nothing was found
 	
 }
 
