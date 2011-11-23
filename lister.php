@@ -15,13 +15,11 @@
 //  list images in a given directory
 function lister($dir)
 {
-	echo $dir;
-	
-	$files = scandir($dir);
+	$files = scandir($dir); // strip slashes added in $_GET
 	
 	if ($files === FALSE)
 	{
-		echo 'Unable to open folder';
+		echo 'Unable to open folder 1';
 	}
 	
 	$content = array();
@@ -49,11 +47,13 @@ function lister($dir)
 }
 
 // return thumbnail representing a directory
-function get_thumbnail($dir)
+// V2 : works with the list previously created, faster & more powerful
+//function get_thumbnail($dir)
+function get_thumbnail($list)
 {
 	global $extensions; // access defined file extensions list
 	
-	if (is_dir($dir) !== TRUE)
+	/*if (is_dir($dir) !== TRUE)
 	{
 		echo 'Unable to open folder';
 	}
@@ -80,13 +80,17 @@ function get_thumbnail($dir)
 				return $file; // return the first picture found
 			}
 		}
-	}
+	}*/
+	
+	//if ()
+	
 }
 
 // return the folder from GET param
 function get_folder()
 {
-	$folder = $_GET['gallery']; // $_GET is automatically url-decoded - and a slash added
+	$folder = $_GET['gallery']; // $_GET is automatically url-decoded - and backslashes added
+	$folder = stripslashes($folder); // remove theses backslashes
 	
 	if (stripos($folder, '..') !== FALSE) // strict test (can return 0 for "position 0")
 	{
@@ -114,7 +118,6 @@ function show_path($root, $dir)
 		
 		foreach ($path as $step)
 		{
-			$step = stripslashes($step); // strip slashes that were automatically added when using $_GET
 			$link .= $step.'/';
 			$step = htmlentities($step, ENT_QUOTES, 'UTF-8'); // html encode to take care of probable shit, watch out we're in UTF-8 for folders
 			

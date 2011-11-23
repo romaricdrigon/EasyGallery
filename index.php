@@ -45,7 +45,8 @@
 						$path = ($subdir=='')?$fol:$subdir.'/'.$fol;
 						
 						$html = '<a href="?gallery='.gallery_link($path).'" title="'.$fol.'">'; // url encode, be prudent
-						$html .= '<div class="thumb" style="background-image: url(\''.$dir.'/'.$fol.'/'.get_thumbnail($dir.'/'.$fol).'\');"';
+						//$html .= '<div class="thumb" style="background-image: url(\''.$dir.'/'.$fol.'/'.get_thumbnail($dir.'/'.$fol).'\');"';
+						$html .= '<div class="thumb" style="background-image: url(\''.$dir.'/'.$fol.'/'.get_thumbnail($list).'\');"';
 						$html .= '><div class="text">'.$fol.'</div></div></a>';
 						
 						echo $html;
