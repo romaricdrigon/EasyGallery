@@ -13,15 +13,20 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>EasyGallery</title>
 	<link type="text/css" href="style.css" rel="stylesheet" />
+	<!-- jQuery -->
 	<script type="text/javascript" src="lib/jquery-1.6.4.min.js"></script>
+	<!-- Galleria (jQuery plugin) -->
 	<script type="text/javascript" src="galleria/galleria-1.2.5.min.js"></script>
 	<script type="text/javascript" src="galleria/themes/classic/galleria.classic.min.js"></script>
 	<script type="text/javascript" src="galleria/plugins/history/galleria.history.min.js"></script>
+	<!-- custom script -->
+	<script type="text/javascript" src="easygallery.js"></script>	
 </head>
 <body>
-	<div class="main">
+	<div class="main" id="main">
 		<div class="header"><h2>EasyGallery</h2></div>
 		<div class="path"><?php show_path('photos', $subdir); ?></div>
+		<div id="fullscreen">Passer en mode plein &eacute;cran</div>
 		<div class="gallery" id="gallery">
 			<!-- link to images - will be displayed if Javascript is disabled -->
 			<?php
@@ -57,6 +62,14 @@
 			endif;
 		?>
 	<div class="footer">
+		<?php 
+			// display the comment only if there's a gallery
+			if (sizeof($list['picture']) != 0):
+		?>
+			<span class="white">Appuyer sur la touche "Entr&eacute;e" du clavier pour d&eacute;marrer le diaporama, "Esc" pour le quitter.</span><br />
+		<?php 
+			endif;
+		?>
 		EasyGallery, 2011, <a href="http://github.com/romaricdrigon/" target="_blank">http://github.com/romaricdrigon/</a>
 	</div>
 	</div> <!-- end main -->
