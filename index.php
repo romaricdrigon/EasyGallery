@@ -1,4 +1,9 @@
 <?php
+	/*
+	 * EasyGallery
+	 * http://github.com/romaricdrigon/
+	 */
+	
 	require('lister.php');
 	
 	$subdir = get_folder(); // get only subdirectory
@@ -26,7 +31,6 @@
 	<div class="main" id="main">
 		<div class="header"><h2>EasyGallery</h2></div>
 		<div class="path"><?php show_path('photos', $subdir); ?></div>
-		<div id="fullscreen">Passer en mode plein &eacute;cran</div>
 		<div class="gallery" id="gallery">
 			<!-- link to images - will be displayed if Javascript is disabled -->
 			<?php

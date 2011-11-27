@@ -1,12 +1,17 @@
 <?php
-/*
- * Thsi very little piece of script will list
- * files (pictures only) & folders in a directory,
- * sorted by ascending alphebitic order
- * No recursion, no fancy and cpu-consuming stuff
- * @param :
- *  - dir name {string}, with no slashes
- */
+	/*
+	 * EasyGallery
+	 * http://github.com/romaricdrigon/
+	 */
+	
+	/*
+	 * This very little piece of script will list
+	 * files (pictures only) & folders in a directory,
+	 * sorted by ascending alphebitic order
+	 * No recursion, no fancy and cpu-consuming stuff
+	 * @param :
+	 *  - dir name {string}, with no slashes
+	 */
 
  	// we can't define an array as const - so we'll accede this var via super-global
  	// and, oh, yes it's dirty, but so damn fast to code
