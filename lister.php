@@ -20,9 +20,19 @@
 //  list images in a given directory
 function lister($dir)
 {
-	$files = scandir($dir);
+
+	// test if dir exists before
+	if (is_dir($dir))
+	{
+		$files = scandir($dir);
+	}
+	else
+	{
+		echo 'Dossier introuvable';
+		return;
+	}
 	
-	if ($files === FALSE)
+	if ($files == FALSE)
 	{
 		echo 'Unable to open folder';
 	}
