@@ -46,7 +46,7 @@
 					{
 						if (($use_thumbs === TRUE) && (isset($pic['thumb'])))
 						{
-							echo '<a href="'.$dir.'/'.$pic['big'].'" thumb="'.$dir.'/'.$pic['thumb'].'">'.$pic['big'].'</a><br />'."\n";
+							echo '<a href="'.$dir.'/'.$pic['big'].'" rel="'.$dir.'/'.$pic['thumb'].'">'.$pic['big'].'</a><br />'."\n";
 						}
 						else
 						{
@@ -107,7 +107,7 @@
 		            <?php
 		            	if ($use_thumbs === TRUE)
 						{
-							echo 'thumb: $(a).attr(\'thumb\'),'."\n";
+							echo 'thumb: $(a).attr(\'rel\'),'."\n";
 						}
 		            ?>
 		            image: $(a).attr('href') // tell Galleria that the href is the main image,
