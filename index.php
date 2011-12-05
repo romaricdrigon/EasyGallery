@@ -4,6 +4,10 @@
 	 * http://github.com/romaricdrigon/
 	 */
 	
+	/* Config */
+	// do you want to use thumbs? 60px images, faster with thumbs
+	$use_thumbs = TRUE;
+	
 	require('lister.php');
 	
 	$subdir = get_folder(); // get only subdirectory
@@ -37,7 +41,14 @@
 				// show link to images
 				foreach ($list['picture'] as $pic)
 				{
-					echo '<a href="'.$dir.'/'.$pic.'">'.$pic.'</a><br />';
+					if ($use_thumbs === TRUE)
+					{
+						echo '<a href="'.$dir.'/'.$pic.'" thumb="'.$dir.'/'.$pic.'">'.$pic.'</a><br />'."\n";
+					}
+					else
+					{
+						echo '<a href="'.$dir.'/'.$pic.'">'.$pic.'</a><br />'."\n";
+					}
 				}
 			?>
 		</div>
@@ -55,7 +66,7 @@
 						
 						$html = '<a href="?gallery='.gallery_link($path).'" title="'.$fol.'">'; // url encode, be prudent
 						$html .= '<div class="thumb" style="background-image: url(\''.$dir.'/'.$fol.'/'.get_thumbnail($dir.'/'.$fol).'\');"';
-						$html .= '><div class="text">'.$fol.'</div></div></a>';
+						$html .= '><div class="text">'.$fol.'</div></div></a>'."\n";
 						
 						echo $html;
 					}
@@ -88,6 +99,12 @@
 		    dataSelector: "a",
 		    dataConfig: function(a) {
 		        return {
+		            <?php
+		            	if ($use_thumbs === TRUE)
+						{
+							echo 'thumb: $(a).attr(\'thumb\'),'."\n";
+						}
+		            ?>
 		            image: $(a).attr('href') // tell Galleria that the href is the main image,
 					// we have no title and so on at the moment
 		        };
