@@ -5,7 +5,8 @@
 	 */
 	
 	/* Config */
-	// do you want to use thumbs? 60px images, faster with thumbs
+	// do you want to use thumbs? 60px images, galleries will load faster (big pictures are not loaded at the same time than the page)
+	// it'll degrade smartly if no thumb is found - but disabling it may allow you to save a little time if you don't have any thumb
 	$use_thumbs = TRUE;
 	
 	require('lister.php');
@@ -14,7 +15,7 @@
 	$dir = ($subdir=='')?'photos':'photos/'.$subdir; // full path - check if there's subdir to avoid ending /
 
 	// scan folder
-	$list = lister($dir);
+	$list = lister($dir, $use_thumbs);
 ?>
 <!doctype html>
 <html>
@@ -41,13 +42,17 @@
 				// show link to images
 				foreach ($list['picture'] as $pic)
 				{
-					if ($use_thumbs === TRUE)
+					if (isset($pic['big'])) // we check if the big pictur exists
 					{
-						echo '<a href="'.$dir.'/'.$pic.'" thumb="'.$dir.'/'.$pic.'">'.$pic.'</a><br />'."\n";
-					}
-					else
-					{
-						echo '<a href="'.$dir.'/'.$pic.'">'.$pic.'</a><br />'."\n";
+						if (($use_thumbs === TRUE) && (isset($pic['thumb'])))
+						{
+							echo '<a href="'.$dir.'/'.$pic['big'].'" thumb="'.$dir.'/'.$pic['thumb'].'">'.$pic['big'].'</a><br />'."\n";
+						}
+						else
+						{
+							// if no thumb is provided, Galleria will use the big picture automatically
+							echo '<a href="'.$dir.'/'.$pic['big'].'">'.$pic['big'].'</a><br />'."\n";
+						}
 					}
 				}
 			?>

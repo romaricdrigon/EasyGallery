@@ -18,7 +18,7 @@
 	$extensions = array('jpg', 'JPG', 'jpeg', 'JPEG', 'png', 'gif'); // allowed files extensions
 
 //  list images in a given directory
-function lister($dir)
+function lister($dir, $use_thumbs)
 {
 
 	// test if dir exists before
@@ -40,8 +40,10 @@ function lister($dir)
 	$content = array();
 	global $extensions; // access defined file extensions list
 	
-	// array_diff to remove . and ..
-	foreach (array_diff($files, array('.','..')) as $file)
+	$files = array_diff($files, array('.','..')); // array_diff to remove . and ..
+	sort($files, SORT_STRING); // sort, important for next step ; make sure everything is seen as strings
+	
+	foreach ($files as $file)
 	{
 		// careful, you have to call is_dir or is_file on the full path!
 		$f = $dir.'/'.$file;
@@ -53,7 +55,15 @@ function lister($dir)
 		else if (is_file($f) === TRUE && in_array(pathinfo($file, PATHINFO_EXTENSION), $extensions)) // file
 		{
 			// we consider this script will not be used by idiots, so we don't re-check mime type
-			$content['picture'][] = $file;
+			if (($use_thumbs === TRUE) && (strpos($file, '_thumb') != FALSE))
+			{
+				// it's a thumbnail - using str_replace and an associative array allow to match big picture & thumb
+				$content['picture'][str_replace('_thumb', '', $file)]['thumb'] = $file;
+			}
+			else
+			{
+				$content['picture'][$file]['big'] = $file; // otherwise it's a big one
+			}
 		}
 		// we elude symlinks
 	}
@@ -68,7 +78,7 @@ function get_thumbnail($dir)
 {
 	global $extensions; // access defined file extensions list
 	
-	$list = lister($dir);
+	$list = lister($dir, FALSE); // we d'ont care about thumbs, so save some time
 	
 	if (isset($list['picture']['thumbnail.jpg']) === TRUE)
 	{
@@ -77,7 +87,9 @@ function get_thumbnail($dir)
 	// get first picture file in the folder
 	else if ((isset($list['picture']) === TRUE) && (sizeof($list['picture']) > 0))
 	{
-		return $list['picture'][0];
+		//reset($list['picture']); // does not seems necessary here
+		$key = key($list['picture']); // get current value
+		return $list['picture'][$key]['big'];
 	}
 	// search in sub folders
 	else if ((isset($list['folder']) === TRUE) && (sizeof($list['folder']) > 0))
