@@ -42,7 +42,7 @@
 				// show link to images
 				foreach ($list['picture'] as $pic)
 				{
-					if (isset($pic['big'])) // we check if the big pictur exists
+					if (isset($pic['big']) && ($pic['big'] !== 'thumbnail.jpg')) // we check if the big picture exists
 					{
 						if (($use_thumbs === TRUE) && (isset($pic['thumb'])))
 						{
