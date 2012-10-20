@@ -16,17 +16,17 @@ Put the app files in a web-enabled directory.
 Put pictures & sub-folders in ```/photos/```  
 
 Avoid special chars in names of subdirectories & files (spaces are ok, as accents).  
-Two consecutive dots (```..```) are forbidden, as it means upper directory!
+Two consecutive dots (```..```) are forbidden, as it means upper directory!  
 Empty folders (no file at all and no subfolders) will not be displayed.
 
 ## Examples / Demo
 
-You can see it in action [here](http://romaricdrigon.fr/easy-gallery/)
+You can see it in action [here](http://romaricdrigon.fr/easy-gallery/)  
 It's also used at the moment to power [theses galleries](http://photos.24heures.org/)
 
 ## Localization
 
-Set ```$lang``` variable, at the top of ```index.php``` to either English, ```en```, or French, ```fr```
+Set ```$lang``` variable, at the top of ```index.php``` to either English, ```en```, or French, ```fr```  
 If you want to create your own, translation are very simple PHP files (4 strings to translate!) under ```/lang```
 
 ## Thumbnails
@@ -54,10 +54,10 @@ Only pictures are accepted: ```.jpg```, ```.jpeg```, ```.png``` or ```.gif``` fi
 
 ## Set a custom thumbnail
 
-It will first search in a subfolder for a file named ```thumbnail.jpg``. If not found, it will use the first picture.
+It will first search in a subfolder for a file named ```thumbnail.jpg``. If not found, it will use the first picture.  
 If there are no pictures in the folder, then it's recursive, it will search it's first subfolder for a file...
 
 ## License
 
-Feel free to use and abuse, modify and redistributing and so on. I would be happy to hear from users!
+Feel free to use and abuse, modify and redistributing and so on. I would be happy to hear from users!  
 It uses jQuery, Galleria (and some plugins) under MIT license.
