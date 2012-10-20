@@ -88,7 +88,16 @@ body {
 	color: #333;
 }
 .footer span.white {
-	color: #777;
+    color: #777;
+}
+.footer p.grey {
+    color: #555;
+}
+.footer p.darkgrey {
+    color: #333;
+}
+.footer p.darkgrey a {
+    color: #444;
 }
 .footer a {
 	color: inherit;

@@ -8,8 +8,11 @@
 	// do you want to use thumbnails? 60px images, galleries will load faster (big pictures are not loaded at the same time than the page)
 	// it'll degrade smartly if no thumb is found - but disabling it may allow you to save a little time if you don't have any thumb
 	$use_thumbs = TRUE;
+    $lang = 'en'; // either fr or en
+    /* end of config, no more things to modify */
 	
 	require('lister.php');
+    require('lang/'.$lang.'.php');
 	
 	$subdir = get_folder(); // get only subdirectory
 	$dir = ($subdir=='')?'photos':'photos/'.$subdir; // full path - check if there's subdir to avoid ending /
@@ -21,7 +24,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>EasyGallery</title>
+	<title><?php echo $messages['title']; ?></title>
 	<link type="text/css" href="style.css" rel="stylesheet" />
 	<!-- jQuery -->
 	<script type="text/javascript" src="lib/jquery.min.js"></script>
@@ -33,7 +36,7 @@
 </head>
 <body>
 	<div class="main" id="main">
-		<div class="header"><h2>EasyGallery</h2></div>
+		<div class="header"><h2><?php echo $messages['title']; ?></h2></div>
 		<div class="path"><?php show_path('photos', $subdir); ?></div>
 		<div class="gallery" id="gallery">
 			<!-- link to images - will be displayed if Javascript is disabled -->
@@ -55,7 +58,7 @@
 			if (isset($list['folder']) && sizeof($list['folder']) !== 0):
 		?>
 			<div class="gallery_list">
-				<h3>Sous-galeries</h3>
+				<h3><?php echo $messages['subgalleries']; ?></h3>
 				<?php
 					// show link to images
 					foreach ($list['folder'] as $fol) {
@@ -77,12 +80,12 @@
 			// display the comment only if there's a gallery
 			if (isset($list['picture']) && sizeof($list['picture']) !== 0):
 		?>
-			<span class="white">Appuyer sur la touche "Entr&eacute;e" du clavier pour passer en mode plein &eacute;cran,<br />
-                "Espace" pour lancer/arr&ecirc;ter le diaporama, "&Eacute;chap" pour tout quitter.</span><br />
+			<span class="white"><?php echo $messages['keyboards_shortcuts']; ?></span>
 		<?php 
 			endif;
 		?>
-		<p>EasyGallery, 2012, <a href="http://github.com/romaricdrigon/" target="_blank">http://github.com/romaricdrigon/</a></p>
+		<p class="grey"><?php echo $messages['copyright']; ?></p>
+        <p class="darkgrey">powered by <a href="http://github.com/romaricdrigon/" target="_blank">EasyGallery</a></p>
 	</div>
 	</div> <!-- end main -->
 	<!-- finally, we load galleria -->

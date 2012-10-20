@@ -19,6 +19,11 @@ Avoid special chars in names of subdirectories & files (spaces are ok, as accent
 Two consecutive dots (```..```) are forbidden, as it means upper directory!
 Empty folders (no file at all and no subfolders) will not be displayed.
 
+## Localization
+
+Set ```$lang``` variable, at the top of ```index.php``` to either English, ```en```, or French, ```fr```
+If you want to create your own, translation are very simple PHP files (4 strings to translate!) under ```/lang```
+
 ## Thumbnails
 
 You may consider adding thumbs pictures, so the page will load way faster (because Galleria fetches only the small pictures, and not the full ones) and the UX will be smoother.
