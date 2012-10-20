@@ -1,2 +1,6 @@
-.project, .gitignore, photos/, .DS_Store
 .project
+.idea
+.gitignore
+photos/*
+.DS_Store
+thumbs.db
