@@ -19,6 +19,11 @@ Avoid special chars in names of subdirectories & files (spaces are ok, as accent
 Two consecutive dots (```..```) are forbidden, as it means upper directory!
 Empty folders (no file at all and no subfolders) will not be displayed.
 
+## Examples
+
+You can see it in action [here](http://romaricdrigon.fr/easy-gallery/)  
+It's also used at the moment to power [theses galleries](http://photos.24heures.org/)
+
 ## Thumbnails
 
 You may consider adding thumbs pictures, so the page will load way faster (because Galleria fetches only the small pictures, and not the full ones) and the UX will be smoother.
@@ -49,5 +54,5 @@ If there're no pictures in the folder, then it's recursive, it'll search it's fi
 
 ## License
 
-Feel free to use and abuse this, modify and redistributing and so on. I would be happy to hear from users!
+Feel free to use and abuse, modify and redistributing and so on. I would be happy to hear from users!
 It uses jQuery, Galleria (and some plugins) under MIT license.
