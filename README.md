@@ -13,11 +13,16 @@ If the visitor does not have Javascript enabled (really?), he will just see a li
 ## Installation
 
 Put the app files in a web-enabled directory.  
-Put pictures & sub-folders in ``/photos/```  
+Put pictures & sub-folders in ```/photos/```  
 
 Avoid special chars in names of subdirectories & files (spaces are ok, as accents).  
 Two consecutive dots (```..```) are forbidden, as it means upper directory!
 Empty folders (no file at all and no subfolders) will not be displayed.
+
+## Examples / Demo
+
+You can see it in action [here](http://romaricdrigon.fr/easy-gallery/)
+It's also used at the moment to power [theses galleries](http://photos.24heures.org/)
 
 ## Localization
 
@@ -39,20 +44,20 @@ It supports keyboard commands:
  - ```left``` and ```right arrow``` will change the picture
  - ```Enter``` key toggle full screen mode
  - ```spacebar``` launch/stop the slideshow mode (with a 5 seconds delay, available in normal or fullscreen mode)
- - ```esc`` key leave any of the previous mode
+ - ```esc``` key leave any of the previous mode
 
  On mobile devices, you can swipe to change the picture.
 
 ## What format are supported?
 
-Only pictures are accepted: ```.jpg```, ```.jpeg, ```.png``` or ```.gif``` files (upper or lowercase).
+Only pictures are accepted: ```.jpg```, ```.jpeg```, ```.png``` or ```.gif``` files (upper or lowercase).
 
 ## Set a custom thumbnail
 
-It'll first search in a subfolder for a file named ```thumbnail.jpg``. If not found, it'll use the first picture.  
-If there're no pictures in the folder, then it's recursive, it'll search it's first subfolder for a file...
+It will first search in a subfolder for a file named ```thumbnail.jpg``. If not found, it will use the first picture.
+If there are no pictures in the folder, then it's recursive, it will search it's first subfolder for a file...
 
 ## License
 
-Feel free to use and abuse this, modify and redistributing and so on. I would be happy to hear from users!
+Feel free to use and abuse, modify and redistributing and so on. I would be happy to hear from users!
 It uses jQuery, Galleria (and some plugins) under MIT license.
