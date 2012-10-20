@@ -19,8 +19,8 @@ Empty folders (no file at all and no subfolders) will not be displayed.
 
 ## Thumbnails
 
-You may consider adding thumbnails pictures, so the page will load way faster (because Galleria fetches only the small pictures, and not the full ones) and the UX will be smoother.  
-Make 60px-big picture, add ```_thumb``` suffix in their names (before the extension), and make sure $use_thumbs is set to TRUE in ```index.php`` at the beginning.
+You may consider adding thumbs pictures, so the page will load way faster (because Galleria fetches only the small pictures, and not the full ones) and the UX will be smoother.
+Make 60px-big picture, add ```_thumb``` suffix in their names (before the extension), and make sure ```$use_thumbs``` is set to ```TRUE``` in ```index.php``` at the beginning.
 
 You can disable thumbs check: it will not look for thumbs, which may you save a little time in huge collections, but pages may take a huge time to load then.
 
