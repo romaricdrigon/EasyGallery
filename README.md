@@ -8,6 +8,8 @@ You can have an unlimited number of (imbricated) galleries, so you can keep thin
 
 It's best not to use big pictures files (< 0.5 mb), as thumbnails are resized on the fly, it's both useless (they're displayed as 960px wide) and may slow down the application.
 
+If the visitor does not have Javascript enabled (really?), he will just see a list of thumbnail-sized pictures (with a link to the bigger version), and he will be able to navigate through galleries anyway.
+
 ## Installation
 
 Put the app files in a web-enabled directory.  
@@ -29,13 +31,16 @@ Anyway, the script will degrade nicely, if no thumbnail is found, it'll use the 
 ## Keyboard handling
 
 It supports keyboard commands: 
- - left/right arrows will change the picture
- - enter key launch the diaporama (using a 3 sec. delay)
- - esc. key leave it.
+ - ```left``` and ```right arrow``` will change the picture
+ - ```Enter``` key toggle full screen mode
+ - ```spacebar``` launch/stop the slideshow mode (with a 5 seconds delay, available in normal or fullscreen mode)
+ - ```esc`` key leave any of the previous mode
+
+ On mobile devices, you can swipe to change the picture.
 
 ## What format are supported?
 
-Only pictures are accepted: ```.jpg```, ```.jpeg, ```.png``` or ```.gif``` files
+Only pictures are accepted: ```.jpg```, ```.jpeg, ```.png``` or ```.gif``` files (upper or lowercase).
 
 ## Set a custom thumbnail
 

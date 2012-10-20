@@ -26,11 +26,10 @@
 	<!-- jQuery -->
 	<script type="text/javascript" src="lib/jquery.min.js"></script>
 	<!-- Galleria (jQuery plugin) -->
-	<script type="text/javascript" src="galleria/galleria-1.2.5.min.js"></script>
-	<script type="text/javascript" src="galleria/themes/classic/galleria.classic.min.js"></script>
-	<script type="text/javascript" src="galleria/plugins/history/galleria.history.min.js"></script>
-	<!-- our custom script -->
-	<script type="text/javascript" src="easygallery.js"></script>
+	<script type="text/javascript" src="lib/galleria/galleria.min.js"></script>
+	<script type="text/javascript" src="lib/galleria/themes/classic/galleria.classic.min.js"></script>
+	<script type="text/javascript" src="lib/galleria/plugins/history/galleria.history.min.js"></script>
+    <link rel="stylesheet" href="lib/galleria/themes/classic/galleria.classic.css">
 </head>
 <body>
 	<div class="main" id="main">
@@ -43,10 +42,10 @@
 				foreach ($list['picture'] as $pic) {
 					if (isset($pic['big']) && ($pic['big'] !== 'thumbnail.jpg')) { // we check if the big picture exists
 						if (($use_thumbs === TRUE) && (isset($pic['thumb']))) {
-							echo '<a href="'.$dir.'/'.$pic['big'].'" rel="'.$dir.'/'.$pic['thumb'].'">'.$pic['big'].'</a><br />'."\n";
+							echo '<a href="'.$dir.'/'.$pic['big'].'"><img src="'.$dir.'/'.$pic['thumb'].'" /></a><br />'."\n";
 						} else {
 							// if no thumb is provided, Galleria will use the big picture automatically
-							echo '<a href="'.$dir.'/'.$pic['big'].'">'.$pic['big'].'</a><br />'."\n";
+							echo '<img src="'.$dir.'/'.$pic['big'].'" /><br />'."\n";
 						}
 					}
 				}
@@ -78,34 +77,52 @@
 			// display the comment only if there's a gallery
 			if (isset($list['picture']) && sizeof($list['picture']) !== 0):
 		?>
-			<span class="white">Appuyer sur la touche "Entr&eacute;e" du clavier pour d&eacute;marrer le diaporama, "Esc" pour le quitter.</span><br />
+			<span class="white">Appuyer sur la touche "Entr&eacute;e" du clavier pour passer en mode plein &eacute;cran,<br />
+                "Espace" pour lancer/arr&ecirc;ter le diaporama, "&Eacute;chap" pour tout quitter.</span><br />
 		<?php 
 			endif;
 		?>
-		EasyGallery, 2012, <a href="http://github.com/romaricdrigon/" target="_blank">http://github.com/romaricdrigon/</a>
+		<p>EasyGallery, 2012, <a href="http://github.com/romaricdrigon/" target="_blank">http://github.com/romaricdrigon/</a></p>
 	</div>
 	</div> <!-- end main -->
 	<!-- finally, we load galleria -->
 	<script>
-		$('#gallery').galleria({
-		    //data_source: data,
-		    height: 700,
-		    width: 960,
-		    debug: false,
-		    // we use a custom source, because img will all load on startup it's crappy, and json may not work if javascript is disabled
-		    dataSelector: "a",
-		    dataConfig: function(a) {
-		        return {
-		            <?php
-		            	if ($use_thumbs === TRUE) {
-							echo 'thumb: $(a).attr(\'rel\'),'."\n";
-						}
-		            ?>
-		            image: $(a).attr('href') // tell Galleria that the href is the main image,
-					// we have no title and so on at the moment
-		        };
-		    }
-		});
+        // no need to loadTheme, already included
+        Galleria.run('#gallery');
+
+        // Galleria options, you may want to take a look
+        // doc cf. http://galleria.io/docs/options/
+        Galleria.configure({
+            carousel: true, // the carousel with thumbnails
+            debug: false, // will display error messages
+            height: 700,
+            width: 960,
+            imageCrop: false, // scale down the image, no cropping
+            lightbox: false, // open a lightbox when clicking an image
+            responsive: false, // if you wan tto set up a responsive design
+            showCounter: true, // the images counter
+            showImagenav: true, // navigation arrows
+            swipe: true, // swipe on mobile device to nav
+            thumbCrop: true, // same that imageCrop - "fill the square"
+            transition: 'slide', // between images
+            touchTransition: 'slide' // the same on mobile devices
+        });
+
+        // bind keyboard shortcuts when Galleria is ready
+        Galleria.ready(function () {
+            // bind function to keyboard using Galleria API
+            this.attachKeyboard({
+                left: this.prev,
+                right: this.next,
+                13: function() {
+                  this.toggleFullscreen(); // enter will launch/quit full screen mode
+                },
+                32: function() {
+                    this.playToggle(); // play or pause slideshow when space is pressed
+                },
+                27: this.pause // Esc can exit full screen, but also stop slideshow
+            });
+        });
 	</script>
 </body>
 </html>
