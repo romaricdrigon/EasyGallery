@@ -13,7 +13,7 @@ If the visitor does not have Javascript enabled (really?), he will just see a li
 ## Installation
 
 Put the app files in a web-enabled directory.  
-Put pictures & sub-folders in ``/photos/```  
+Put pictures & sub-folders in ```/photos/```  
 
 Avoid special chars in names of subdirectories & files (spaces are ok, as accents).  
 Two consecutive dots (```..```) are forbidden, as it means upper directory!
@@ -34,13 +34,13 @@ It supports keyboard commands:
  - ```left``` and ```right arrow``` will change the picture
  - ```Enter``` key toggle full screen mode
  - ```spacebar``` launch/stop the slideshow mode (with a 5 seconds delay, available in normal or fullscreen mode)
- - ```esc`` key leave any of the previous mode
+ - ```esc``` key leave any of the previous mode
 
  On mobile devices, you can swipe to change the picture.
 
 ## What format are supported?
 
-Only pictures are accepted: ```.jpg```, ```.jpeg, ```.png``` or ```.gif``` files (upper or lowercase).
+Only pictures are accepted: ```.jpg```, ```.jpeg```, ```.png``` or ```.gif``` files (upper or lowercase).
 
 ## Set a custom thumbnail
 
