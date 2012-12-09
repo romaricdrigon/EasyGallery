@@ -62,7 +62,7 @@ If there are no pictures in the folder, then it's recursive, it will search it's
 On top of ```index.php``` file, you may configure some parameters:
  - ```$use_thumbs```: if FALSE, it won't look for thumbnails (you may save some server time; however not using thumbnails is not a really good idea for your viewers)
  - ```$thumbs_suffix```: you may change the ```_thumb``` suffix used to differentiate thumbs from full-size pictures to something else
- - ```$lang```: cf (localization)[#Localization)
+ - ```$lang```: cf [localization](#localization)
 
 ## License
 
