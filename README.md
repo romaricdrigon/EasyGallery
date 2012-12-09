@@ -32,11 +32,11 @@ If you want to create your own, translation are very simple PHP files (4 strings
 ## Thumbnails
 
 You may consider adding thumbs pictures, so the page will load way faster (because Galleria fetches only the small pictures, and not the full ones) and the UX will be smoother.
-Make 60px-big picture, add ```_thumb``` suffix in their names (before the extension), and make sure ```$use_thumbs``` is set to ```TRUE``` in ```index.php``` at the beginning.
+Make 60px-big picture, add ```_thumb``` suffix in their names (before the extension ; it may be changed, see [config](#Options)).
 
-You can disable thumbs check: it will not look for thumbs, which may you save a little time in huge collections, but pages may take a huge time to load then.
+You can disable thumbs check: it will not look for thumbs, which may you save a little time in huge collections, but pages may take a huge time to load then. See [options](#Options).
 
-Anyway, the script will degrade nicely, if no thumbnail is found, it'll use the big picture instead. If a thumb exists but not the corresponding file (same name), it'll not display it.
+Anyway, the script will degrade nicely, if no thumbnail is found, it'll use the full-size picture. If a thumb exists but not the corresponding file (same name), it'll not display it.
 
 ## Keyboard handling
 
@@ -54,8 +54,15 @@ Only pictures are accepted: ```.jpg```, ```.jpeg```, ```.png``` or ```.gif``` fi
 
 ## Set a custom thumbnail
 
-It will first search in a subfolder for a file named ```thumbnail.jpg``. If not found, it will use the first picture.  
+It will first search in a subfolder for a file named ```thumbnail.jpg```. If not found, it will use the first picture.
 If there are no pictures in the folder, then it's recursive, it will search it's first subfolder for a file...
+
+## Options
+
+On top of ```index.php``` file, you may configure some parameters:
+ - ```$use_thumbs```: if FALSE, it won't look for thumbnails (you may save some server time; however not using thumbnails is not a really good idea for your viewers)
+ - ```$thumbs_suffix```: you may change the ```_thumb``` suffix used to differentiate thumbs from full-size pictures to something else
+ - ```$lang```: cf (localization)[#Localization)
 
 ## License
 

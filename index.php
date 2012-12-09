@@ -8,6 +8,7 @@
 	// do you want to use thumbnails? 60px images, galleries will load faster (big pictures are not loaded at the same time than the page)
 	// it'll degrade smartly if no thumb is found - but disabling it may allow you to save a little time if you don't have any thumb
 	$use_thumbs = TRUE;
+    $thumbs_suffix = '_thumb'; // the thumbs corresponding to 'IMG42.jpg' should be called 'IMG42_thumb.jpg'
     $lang = 'en'; // either fr or en
     /* end of config, no more things to modify */
 	
@@ -18,7 +19,7 @@
 	$dir = ($subdir=='')?'photos':'photos/'.$subdir; // full path - check if there's subdir to avoid ending /
 
 	// scan folder
-	$list = lister($dir, $use_thumbs);
+	$list = lister($dir, $use_thumbs, $thumbs_suffix);
 ?>
 <!doctype html>
 <html>

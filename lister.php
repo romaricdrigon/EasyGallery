@@ -17,7 +17,7 @@
 	$extensions = array('jpg', 'JPG', 'jpeg', 'JPEG', 'png', 'PNG', 'gif', 'GIF');
 
 //  list images in a given directory
-function lister($dir, $use_thumbs)
+function lister($dir, $use_thumbs, $thumbs_suffix)
 {
 	// test if dir exists before
 	if (is_dir($dir)) {
@@ -45,9 +45,9 @@ function lister($dir, $use_thumbs)
             $content['folder'][] = $file;
 		} else if (is_file($f) === TRUE && in_array(pathinfo($file, PATHINFO_EXTENSION), $extensions)) { // file
 			// we consider this script will not be used by idiots, so we don't re-check mime type
-			if (($use_thumbs === TRUE) && (strpos($file, '_thumb') != FALSE)) {
+			if (($use_thumbs === TRUE) && (strpos($file, $thumbs_suffix) != FALSE)) {
 				// it's a thumbnail - using str_replace and an associative array allow to match big picture & thumb
-				$content['picture'][str_replace('_thumb', '', $file)]['thumb'] = $file;
+				$content['picture'][str_replace($thumbs_suffix, '', $file)]['thumb'] = $file;
 			} else {
 				$content['picture'][$file]['big'] = $file; // otherwise it's a big one
 			}
