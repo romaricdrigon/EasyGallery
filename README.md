@@ -32,9 +32,9 @@ If you want to create your own, translation are very simple PHP files (4 strings
 ## Thumbnails
 
 You may consider adding thumbs pictures, so the page will load way faster (because Galleria fetches only the small pictures, and not the full ones) and the UX will be smoother.
-Make 60px-big picture, add ```_thumb``` suffix in their names (before the extension ; it may be changed, see [config](#Options)).
+Make 60px-big picture, add ```_thumb``` suffix in their names (before the extension ; it may be changed, see [config](#options)).
 
-You can disable thumbs check: it will not look for thumbs, which may you save a little time in huge collections, but pages may take a huge time to load then. See [options](#Options).
+You can disable thumbs check: it will not look for thumbs, which may you save a little time in huge collections, but pages may take a huge time to load then. See [options](#options).
 
 Anyway, the script will degrade nicely, if no thumbnail is found, it'll use the full-size picture. If a thumb exists but not the corresponding file (same name), it'll not display it.
 
