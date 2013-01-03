@@ -38,7 +38,7 @@
 <body>
 	<div class="main" id="main">
 		<div class="header"><h2><?php echo $messages['title']; ?></h2></div>
-		<div class="path"><?php show_path('photos', $subdir); ?></div>
+		<div class="path"><?php show_path($subdir); ?></div>
 		<div class="gallery" id="gallery">
 			<!-- link to images - will be displayed if Javascript is disabled -->
 			<?php
@@ -46,10 +46,10 @@
 				foreach ($list['picture'] as $pic) {
 					if (isset($pic['big']) && ($pic['big'] !== 'thumbnail.jpg')) { // we check if the big picture exists
 						if (($use_thumbs === TRUE) && (isset($pic['thumb']))) {
-							echo '<a href="'.$dir.'/'.$pic['big'].'"><img src="'.$dir.'/'.$pic['thumb'].'" /></a><br />'."\n";
+							echo '<a href="'.link_safe($dir.'/'.$pic['big']).'"><img src="'.link_safe($dir.'/'.$pic['thumb']).'" /></a><br />'."\n";
 						} else {
 							// if no thumb is provided, Galleria will use the big picture automatically
-							echo '<img src="'.$dir.'/'.$pic['big'].'" /><br />'."\n";
+							echo '<img src="'.link_safe($dir.'/'.$pic['big']).'" /><br />'."\n";
 						}
 					}
 				}
@@ -66,9 +66,9 @@
 						// test to avoid one more slash	
 						$path = ($subdir=='')?$fol:$subdir.'/'.$fol;
 						
-						echo    '<a href="?gallery='.gallery_link($path).'" title="'.$fol.'">'.
-                                '<div class="thumb" style="background-image: url(\''.$dir.'/'.$fol.'/'.get_thumbnail($dir.'/'.$fol).'\');">'.
-						        '<div class="text">'.$fol.'</div></div></a>'."\n";
+						echo    '<a href="?gallery='.gallery_link($path).'" title="'.link_safe($fol).'">'.
+                                '<div class="thumb" style="background-image: url(&quot;'.link_safe($dir.'/'.$fol.'/'.get_thumbnail($dir.'/'.$fol)).'&quot;);">'.
+						        '<div class="text">'.html_safe($fol).'</div></div></a>'."\n";
 					}
 				?>
 				<br clear="all" />

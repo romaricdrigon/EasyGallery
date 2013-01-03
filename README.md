@@ -15,8 +15,13 @@ If the visitor does not have Javascript enabled (really?), he will just see a li
 Put the app files in a web-enabled directory.  
 Put pictures & sub-folders in ```/photos/```  
 
-Avoid special chars in names of subdirectories & files (spaces are ok, as accents).  
-Two consecutive dots (```..```) are forbidden, as it means upper directory!  
+A few restrictions apply on folders name:
+ * accents are supported, everything will be served as UTF-8
+ * spaces are correctly handled
+ * some HTML special chars are forbidden: ```<```, ```>```, ```&``` and ```"```
+ * single quotes, ```'``` are allowed
+ * two dots ```..``` are forbidden (it means upper directory!)
+
 Empty folders (no file at all and no subfolders) will not be displayed.
 
 ## Examples / Demo

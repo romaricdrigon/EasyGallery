@@ -29,6 +29,7 @@ function lister($dir, $use_thumbs, $thumbs_suffix = '')
 	
 	if ($files == FALSE) {
 		echo 'Unable to open folder';
+        return '';
 	}
 	
 	$content = array();
@@ -38,8 +39,7 @@ function lister($dir, $use_thumbs, $thumbs_suffix = '')
 	sort($files, SORT_STRING); // sort, important for next step ; make sure everything is seen as strings
 	
 	foreach ($files as $file) {
-		// careful, you have to call is_dir or is_file on the full path!
-		$f = $dir.'/'.$file;
+		$f = $dir.'/'.$file; // careful, you have to call is_dir or is_file on the full path!
 
 		if (is_dir($f) === TRUE && sizeof(scandir($f)) > 2) { // directory, not empty (2 items by default : . and ..)
             $content['folder'][] = $file;
@@ -106,7 +106,7 @@ function get_folder()
 // @param :
 // - root (first directory, Home)
 // - then path
-function show_path($root, $dir)
+function show_path($dir)
 {
 	echo '<a href="?gallery=/" title="Index">Index</a>';
     $link = '';
@@ -117,10 +117,9 @@ function show_path($root, $dir)
 		
 		foreach ($path as $step) {
 			$link .= $step.'/';
-			$step = htmlentities($step, ENT_QUOTES, 'UTF-8'); // html encode to take care of probable shit, watch out we're in UTF-8 for folders
-			
+
 			// last step, assemble and apply gallery_link
-			$full_path .= ' / <a href="?gallery='.gallery_link($link).'" title="'.$step.'">'.$step.'</a>';
+			$full_path .= ' / <a href="?gallery='.link_safe(gallery_link($link)).'" title="'.link_safe($step).'">'.html_safe($step).'</a>';
 		}		
 	}
 	
@@ -140,6 +139,16 @@ function no_slash($name)
 function gallery_link($name)
 {
 	return urlencode(no_slash($name));
+}
+
+// espace " but not '
+function link_safe($string)
+{
+    return htmlspecialchars($string, ENT_COMPAT, 'UTF-8', false);
+}
+function html_safe($string)
+{
+    return htmlspecialchars($string, ENT_QUOTES, 'UTF-8', false);
 }
 
 /* EOF */
