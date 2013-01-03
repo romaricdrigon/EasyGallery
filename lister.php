@@ -17,7 +17,7 @@
 	$extensions = array('jpg', 'JPG', 'jpeg', 'JPEG', 'png', 'PNG', 'gif', 'GIF');
 
 //  list images in a given directory
-function lister($dir, $use_thumbs, $thumbs_suffix)
+function lister($dir, $use_thumbs, $thumbs_suffix = '')
 {
 	// test if dir exists before
 	if (is_dir($dir)) {
