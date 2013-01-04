@@ -144,11 +144,12 @@ function gallery_link($name)
 // espace " but not '
 function link_safe($string)
 {
-    return htmlspecialchars($string, ENT_COMPAT, 'UTF-8', false);
+    return htmlspecialchars($string, ENT_COMPAT, 'UTF-8');
 }
+// html encode everything, including accents
 function html_safe($string)
 {
-    return htmlspecialchars($string, ENT_QUOTES, 'UTF-8', false);
+    return htmlentities($string, ENT_QUOTES, 'UTF-8');
 }
 
 /* EOF */
