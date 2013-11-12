@@ -30,7 +30,7 @@
 	<!-- jQuery -->
 	<script type="text/javascript" src="lib/jquery.min.js"></script>
 	<!-- Galleria (jQuery plugin) -->
-	<script type="text/javascript" src="lib/galleria/galleria.min.js"></script>
+	<script type="text/javascript" src="lib/galleria/galleria-1.3.2.min.js"></script>
 	<script type="text/javascript" src="lib/galleria/themes/classic/galleria.classic.min.js"></script>
 	<script type="text/javascript" src="lib/galleria/plugins/history/galleria.history.min.js"></script>
     <link rel="stylesheet" href="lib/galleria/themes/classic/galleria.classic.css">
@@ -102,14 +102,11 @@
             height: 700,
             width: 960,
             imageCrop: false, // scale down the image, no cropping
-            lightbox: false, // open a lightbox when clicking an image
-            responsive: false, // if you wan tto set up a responsive design
             showCounter: true, // the images counter
             showImagenav: true, // navigation arrows
-            swipe: true, // swipe on mobile device to nav
+            // swipe: true provokes issues with Galleria 1.3.0+
             thumbCrop: true, // same that imageCrop - "fill the square"
-            transition: 'slide', // between images
-            touchTransition: 'slide' // the same on mobile devices
+            transition: 'slide' // between images
         });
 
         // bind keyboard shortcuts when Galleria is ready
