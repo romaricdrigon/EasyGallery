@@ -7,8 +7,7 @@
     /*
      * This very little piece of script will list
      * files (pictures only) & folders in a directory,
-     * sorted by ascending alphebitic order
-     * No recursion, no fancy and cpu-consuming stuff
+     * sorted by ascending alphabetic order
      * @param :
      *  - dir name {string}, with no slashes
      */
@@ -44,7 +43,7 @@ function lister($dir, $use_thumbs, $thumbs_suffix = '')
         if (is_dir($f) === TRUE && sizeof(scandir($f)) > 2) { // directory, not empty (2 items by default : . and ..)
             $content['folder'][] = $file;
         } else if (is_file($f) === TRUE && in_array(pathinfo($file, PATHINFO_EXTENSION), $extensions)) { // file
-            // we consider this script will not be used by idiots, so we don't re-check mime type
+            // we consider there's only pictures files, this is part of the "contract" - so we don't re-check mime type
             if (($use_thumbs === TRUE) && (strpos($file, $thumbs_suffix) != FALSE)) {
                 // it's a thumbnail - using str_replace and an associative array allow to match big picture & thumb
                 $content['picture'][str_replace($thumbs_suffix, '', $file)]['thumb'] = $file;
@@ -141,7 +140,7 @@ function gallery_link($name)
     return urlencode(no_slash($name));
 }
 
-// espace " but not '
+// escape " but not '
 function link_safe($string)
 {
     return htmlspecialchars($string, ENT_COMPAT, 'UTF-8');
