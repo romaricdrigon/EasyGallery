@@ -31,7 +31,7 @@ function lister($dir, $use_thumbs, $thumbs_suffix = '')
         return '';
     }
 
-    $content = array();
+    $content = array('folder' => [], 'picture' => []);
     global $extensions; // access defined file extensions list
 
     $files = array_diff($files, array('.','..')); // array_diff to remove . and ..
